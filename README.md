@@ -20,12 +20,17 @@ List of tasks created dynamically
 ## Getting Started
 > To get a local copy, follow the following steps
 
-Prerequisites
+## Prerequisites
 >- VS code
 >- Git Bash
 
-Setup
+## Setup
 >- Git clone `https://github.com/rolandfbk/to-do-list.git`
+
+## Usage
+>- npm install
+>- npm run build
+>- npm start
 
 
 ## Author
