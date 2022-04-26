@@ -1,0 +1,94 @@
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  margin: 0;
+}
+
+.list-title {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.title {
+  color: #000;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 80%;
+
+}
+
+.list-form {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.input-task {
+  outline: none;
+  color: #000;
+  border: none;
+  font-size: 20px;
+  line-height: 80%;
+  font-style: italic;
+}
+
+.btn-form {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding-right: 0;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.task-item {
+  color: #000;
+  font-size: 20px;
+  line-height: 80%;
+}
+
+.task-check {
+  margin-right: 10px;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #a9a9a9;
+  cursor: pointer;
+}
+
+a {
+  color: #000;
+}
+
+.task-option {
+  cursor: all-scroll;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #d3d3d3;
+}
+
+.footer a {
+  text-decoration: none;
+  font-size: 20px;
+}
