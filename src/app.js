@@ -114,7 +114,7 @@ const loadObj = () => {
 
         const chkTaskListSet = JSON.parse(JSON.stringify(localStorage.getItem('taskList')));
         const newChkTaskListObjSet = JSON.parse(chkTaskListSet);
-        newChkTaskListObjSet[index].completed = true;
+        newChkTaskListObjSet[index].completed = false;
         localStorage.setItem('taskList', JSON.stringify(newChkTaskListObjSet));
       }
     });
@@ -132,6 +132,7 @@ const loadObj = () => {
     }
 
     localStorage.setItem('taskList', JSON.stringify(newArray));
+    resetObjIndex();
     loadObj();
   });
 
