@@ -14,8 +14,8 @@ main {
 }
 
 .list {
-  width: 60%;
-  margin-top: 100px;
+  width: 100%;
+  margin-top: 10px;
 }
 
 .list-title {
@@ -47,9 +47,20 @@ main {
   outline: none;
   color: #000;
   border: none;
+  width: 90%;
   font-size: 20px;
   line-height: 80%;
   font-style: italic;
+}
+
+.input-item {
+  outline: none;
+  color: #000;
+  border: none;
+  width: 90%;
+  font-size: 20px;
+  line-height: 80%;
+  background-color: transparent;
 }
 
 .btn-form {
@@ -62,16 +73,31 @@ main {
 
 .list-item {
   display: flex;
+  flex-direction: column;
+}
+
+.list-item-first {
+  display: flex;
   justify-content: space-between;
   justify-items: center;
   padding: 20px;
   border-bottom: 1px solid #d3d3d3;
 }
 
+.list-item-second {
+  display: none;
+  justify-content: space-between;
+  justify-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #d3d3d3;
+  background-color: darksalmon;
+}
+
 .task-item {
   color: #000;
   font-size: 20px;
   line-height: 80%;
+  width: 90%;
 }
 
 .task-check {
@@ -90,6 +116,10 @@ a {
   cursor: all-scroll;
 }
 
+.task-option-remove {
+  cursor: pointer;
+}
+
 .footer {
   display: flex;
   justify-content: center;
@@ -101,4 +131,16 @@ a {
 .footer a {
   text-decoration: none;
   font-size: 20px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  color: darkcyan;
+}
+
+@media (min-width: 768px) {
+  .list {
+    width: 60%;
+    margin-top: 100px;
+  }
 }
