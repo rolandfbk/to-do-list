@@ -1,4 +1,6 @@
 import './style.css';
+import { taskMarking, clearCompletedtask } from './task-mark-module.js';
+// import { clearCompletedtask } from './task-mark-module.js';
 
 const listBlock = document.querySelector('.list-block');
 const listForm = document.getElementById('list-form');
@@ -33,20 +35,37 @@ const loadObj = () => {
   const template = [];
   if (newTaskObj.length > 0) {
     for (let i = 0; i < newTaskObj.length; i += 1) {
-      div[i] = document.createElement('div');
-      div[i].className = 'list-item';
-      template[i] = `
-      <div class="list-item-first" id="list-item-first_${i}">
-        <span class="task-item"><input type="checkbox" class="task-check" name="task-check"><label id="label_${i}" for="task-check">${newTaskObj[i].description}</label></span>
-        <a href="#" type="button" class="task-option"><i class="fa fa-ellipsis-v"></i></a>
-      </div>
-      <div class="list-item-second" id="list-item-second_${i}">
-        <span class="task-item"><input class="input-item" type="text" name="input-item" minlength="3" value="${newTaskObj[i].description}"></span>
-        <a href="#" type="button" class="task-option-remove"><i class="fa fa-trash"></i></a>
-      </div>
-      `;
-      div[i].innerHTML = template[i];
-      listBlock.appendChild(div[i]);
+      if (newTaskObj[i].completed === false) {
+        div[i] = document.createElement('div');
+        div[i].className = 'list-item';
+        template[i] = `
+        <div class="list-item-first" id="list-item-first_${i}">
+          <span class="task-item"><input type="checkbox" class="task-check" name="task-check"><label id="label_${i}" for="task-check">${newTaskObj[i].description}</label></span>
+          <a href="#" type="button" class="task-option"><i class="fa fa-ellipsis-v"></i></a>
+        </div>
+        <div class="list-item-second" id="list-item-second_${i}">
+          <span class="task-item"><input class="input-item" type="text" name="input-item" minlength="3" value="${newTaskObj[i].description}"></span>
+          <a href="#" type="button" class="task-option-remove"><i class="fa fa-trash"></i></a>
+        </div>
+        `;
+        div[i].innerHTML = template[i];
+        listBlock.appendChild(div[i]);
+      } else {
+        div[i] = document.createElement('div');
+        div[i].className = 'list-item';
+        template[i] = `
+        <div class="list-item-first" id="list-item-first_${i}">
+          <span class="task-item"><input type="checkbox" class="task-check" name="task-check" checked><label class="label-check" id="label_${i}" for="task-check">${newTaskObj[i].description}</label></span>
+          <a href="#" type="button" class="task-option"><i class="fa fa-ellipsis-v"></i></a>
+        </div>
+        <div class="list-item-second" id="list-item-second_${i}">
+          <span class="task-item"><input class="input-item" type="text" name="input-item" minlength="3" value="${newTaskObj[i].description}"></span>
+          <a href="#" type="button" class="task-option-remove"><i class="fa fa-trash"></i></a>
+        </div>
+        `;
+        div[i].innerHTML = template[i];
+        listBlock.appendChild(div[i]);
+      }
     }
   }
 
@@ -90,6 +109,13 @@ const loadObj = () => {
     });
   });
 
+  const unselectTaskEntry = document.querySelectorAll('.list-entry');
+  unselectTaskEntry.forEach((divElement) => {
+    divElement.addEventListener('click', () => {
+      loadObj();
+    });
+  });
+
   const taskOptionRemove = document.querySelectorAll('.task-option-remove');
   taskOptionRemove.forEach((button, index) => {
     remove(button, index);
@@ -97,44 +123,9 @@ const loadObj = () => {
 
   update();
 
-  const taskCheck = document.querySelectorAll('.task-check');
-  taskCheck.forEach((chk, index) => {
-    chk.addEventListener('click', () => {
-      if (chk.checked === true) {
-        document.getElementById(`label_${index}`).style.textDecoration = 'line-through';
-        document.getElementById(`label_${index}`).style.color = '#a9a9a9';
+  taskMarking();
 
-        const chkTaskListSet = JSON.parse(JSON.stringify(localStorage.getItem('taskList')));
-        const newChkTaskListObjSet = JSON.parse(chkTaskListSet);
-        newChkTaskListObjSet[index].completed = true;
-        localStorage.setItem('taskList', JSON.stringify(newChkTaskListObjSet));
-      } else {
-        document.getElementById(`label_${index}`).style.textDecoration = 'none';
-        document.getElementById(`label_${index}`).style.color = '#000';
-
-        const chkTaskListSet = JSON.parse(JSON.stringify(localStorage.getItem('taskList')));
-        const newChkTaskListObjSet = JSON.parse(chkTaskListSet);
-        newChkTaskListObjSet[index].completed = false;
-        localStorage.setItem('taskList', JSON.stringify(newChkTaskListObjSet));
-      }
-    });
-  });
-
-  clearCompleted.addEventListener('click', () => {
-    const clearTaskListSet = JSON.parse(JSON.stringify(localStorage.getItem('taskList')));
-    const newClearTaskListObjSet = JSON.parse(clearTaskListSet);
-    const newArray = [];
-
-    for (let i = 0; i < newClearTaskListObjSet.length; i += 1) {
-      if (newClearTaskListObjSet[i].completed === false) {
-        newArray.push(newClearTaskListObjSet[i]);
-      }
-    }
-
-    localStorage.setItem('taskList', JSON.stringify(newArray));
-    resetObjIndex();
-    loadObj();
-  });
+  clearCompletedtask(clearCompleted, resetObjIndex, loadObj);
 
   refresh.addEventListener('click', () => {
     const newArray = [];

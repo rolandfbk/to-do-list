@@ -138,6 +138,11 @@ a {
   color: darkcyan;
 }
 
+.label-check {
+  text-decoration: line-through;
+  color: #a9a9a9;
+}
+
 @media (min-width: 768px) {
   .list {
     width: 60%;
