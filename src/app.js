@@ -1,6 +1,5 @@
 import './style.css';
 import { taskMarking, clearCompletedtask } from './task-mark-module.js';
-// import { clearCompletedtask } from './task-mark-module.js';
 
 const listBlock = document.querySelector('.list-block');
 const listForm = document.getElementById('list-form');

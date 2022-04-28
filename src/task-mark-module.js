@@ -27,13 +27,9 @@ export const clearCompletedtask = (clearbtn, resetObjIndexFunction, loadObjFunct
   clearbtn.addEventListener('click', () => {
     const clearTaskListSet = JSON.parse(JSON.stringify(localStorage.getItem('taskList')));
     const newClearTaskListObjSet = JSON.parse(clearTaskListSet);
-    const newArray = [];
+    let newArray = [];
 
-    for (let i = 0; i < newClearTaskListObjSet.length; i += 1) {
-      if (newClearTaskListObjSet[i].completed === false) {
-        newArray.push(newClearTaskListObjSet[i]);
-      }
-    }
+    newArray = newClearTaskListObjSet.filter((e) => e.completed === false);
 
     localStorage.setItem('taskList', JSON.stringify(newArray));
     resetObjIndexFunction();
