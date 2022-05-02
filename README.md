@@ -32,6 +32,10 @@ List of tasks created dynamically
 >- npm run build
 >- npm start
 
+## Live Demo
+
+[Live Demo Link](https://rolandfbk.github.io/to-do-list/)
+
 
 ## Author
 
