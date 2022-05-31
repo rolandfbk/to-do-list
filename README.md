@@ -34,7 +34,7 @@ List of tasks created dynamically
 
 ## Live Demo
 
-[Live Demo Link](https://rolandfbk.github.io/to-do-list/dist)
+[Live Demo Link](https://rolandfbk.github.io/to-do-list)
 
 
 ## Author
